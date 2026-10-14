@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Environments and secrets
+.venv/
+venv/
+env/
+.env
+.env.*
+*.key
+
+# Data, caches and run outputs (bring your own; see benchmarks/README.md).
+# Root-level folders only, so that tests/data (pinned test files) stays in the repository.
+/data/
+/results/
+/runs/
+/checkpoints/
+*.sqlite
+*.npy
+*.pkl
+*.ckpt.json
+
+# Local model configuration (keep your own endpoints and keys out of git)
+models.local.yaml
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

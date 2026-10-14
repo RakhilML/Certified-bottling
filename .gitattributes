@@ -1,0 +1,5 @@
+# LF everywhere: the pinned test data in tests/data is compared after parsing, but keep it byte-stable anyway.
+* text=auto eol=lf
+*.png binary
+*.npy binary
+*.pkl binary

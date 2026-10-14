@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use bottlekit, please cite the paper below."
+title: "bottlekit: certified bottling of repetitive LLM classification workloads"
+type: software
+license: Apache-2.0
+repository-code: "https://github.com/RakhilML/Certified-bottling"
+authors:
+  - given-names: "Rakhil"
+    family-names: "M L"
+    email: "rakhilml2003@gmail.com"
+keywords:
+  - large language models
+  - classification
+  - distillation
+  - finite-population inference
+  - risk control
+preferred-citation:
+  type: article
+  title: "Certified Bottling of Repetitive LLM Classification Workloads: A Rectified Finite-Population Certificate and Certified Reuse"
+  authors:
+    - given-names: "Rakhil"
+      family-names: "M L"
+  year: 2026
+  month: 10
+  # Add the arXiv identifier and URL here when the paper is posted, for example:
+  # identifiers:
+  #   - type: other
+  #     value: "arXiv:XXXX.XXXXX"
+  # url: "https://arxiv.org/abs/XXXX.XXXXX"
