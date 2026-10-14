@@ -1,0 +1,4 @@
+{"session": "f84e13ae8bff4cc5ae0083f696a738d1", "generation": 3, "ev": "reserve", "batch": 0, "key": [21, 1], "s_cal": 3987980942, "digest": "d284127c27621201b3633d0929deb6f1d664ec1855b6a506ae142f300aa2b498"}
+{"session": "f84e13ae8bff4cc5ae0083f696a738d1", "generation": 4, "ev": "commit", "batch": 0, "keys": [[21, 1]], "stream": {"b": 0, "N": 300, "F": 0, "t": "auto", "x": 0, "ok": true, "d": [[[[107, 4]], 300]]}}
+{"session": "f84e13ae8bff4cc5ae0083f696a738d1", "generation": 6, "ev": "reserve", "batch": 1, "key": [21, 1, 1, 300], "s_cal": 3154884938, "digest": "d488f0892885b784010bf7d538c4d1b1591c7446baa41efc433be10b7755e6b5"}
+{"session": "f84e13ae8bff4cc5ae0083f696a738d1", "generation": 7, "ev": "commit", "batch": 1, "keys": [[21, 1, 1, 300]], "stream": {"b": 1, "N": 300, "F": 0, "t": "auto", "x": 0, "ok": true, "d": [[[[107, 4]], 300]]}}
