@@ -1,0 +1,39 @@
+# Example model registry for bottlekit. Copy this file, edit it, and pass it with `--models my_models.yaml`
+# (CLI) or `load_models("my_models.yaml")` (Python).
+#
+# Every entry is an alias. BottleConfig(cheap=..., expert=...) and the CLI flags --cheap / --expert use these aliases.
+# base_url can point at any OpenAI-compatible server: a local vLLM or LM Studio server, OpenRouter, OpenAI, or a proxy.
+#
+# Fields of an entry (all except id/ids are optional):
+#   id / ids        model name as the server knows it; `ids` lists replicas of the same model (requests are spread
+#                   over them by a hash of the request content)
+#   base_url        overrides defaults.base_url
+#   api_key_env     NAME of the environment variable that holds the API key (never put the key itself in this file)
+#   price_in        USD per 1M prompt tokens      (used for cost accounting and the automatic decisions)
+#   price_out       USD per 1M completion tokens
+#   max_concurrency concurrent requests to this model (default 2)
+#   system_prefix   text put in front of the system prompt (for example "/no_think" for Qwen3 models)
+#   extra_body      extra JSON fields sent with every request (for example {reasoning_effort: low})
+#   max_tokens      reply budget of one single-label expert call (reasoning models need more)
+#   batch_extra_tokens     tokens added to the reply budget of every batched cheap call (default 0)
+#   expected_reply_tokens  cost estimate of the extra tokens of one single reply (default: 0.5 * max_tokens)
+#
+# The prices below are placeholders. Set the real prices of your provider: with zero expert prices,
+# mode='auto' and votes='auto' can never choose cheap votes (bottlekit warns about this).
+
+defaults:
+  base_url: http://localhost:8000/v1      # a local vLLM or LM Studio server
+  max_concurrency: 2
+
+models:
+  cheap:  {id: my-small-model, price_in: 0.05, price_out: 0.10}
+  expert: {id: my-large-model, price_in: 0.40, price_out: 1.60}
+
+  # An embedding model for the optional dense student features (CLI: --embed-model embed):
+  # embed:  {id: my-embedding-model, price_in: 0.02, price_out: 0.0}
+
+  # The same aliases on OpenRouter (export OPENROUTER_API_KEY first; use the model ids and prices of your choice):
+  # cheap:  {id: google/gemma-3-4b-it, base_url: https://openrouter.ai/api/v1, api_key_env: OPENROUTER_API_KEY,
+  #          price_in: 0.05, price_out: 0.10}
+  # expert: {id: qwen/qwen3-32b, base_url: https://openrouter.ai/api/v1, api_key_env: OPENROUTER_API_KEY,
+  #          price_in: 0.40, price_out: 1.60}

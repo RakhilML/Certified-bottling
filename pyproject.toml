@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bottlekit"
+dynamic = ["version"]
+description = "Certified bottling of repetitive LLM classification workloads: a cheap model labels, a student is distilled, and an exact finite-population certificate decides which answers to keep."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE"]
+authors = [{ name = "Rakhil M L", email = "rakhilml2003@gmail.com" }]
+keywords = ["llm", "classification", "distillation", "risk control", "finite-population inference", "certification"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "numpy>=2.3",
+    "scipy>=1.17",
+    # Pinned: the byte-identical pinned outputs in tests/ were produced with scikit-learn 1.8.0 (with numpy 2.3.4 and
+    # scipy 1.17.0). scikit-learn 1.9.1 changes the student scores, and two pinned tests then fail.
+    "scikit-learn==1.8.0",
+    "httpx>=0.28",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+# Registry tasks (load_workload, CLI --task) download Hugging Face datasets.
+datasets = ["datasets"]
+dev = ["pytest>=8"]
+
+[project.urls]
+Repository = "https://github.com/RakhilML/Certified-bottling"
+
+[project.scripts]
+bottlekit = "bottlekit.__main__:main"
+
+[tool.setuptools]
+packages = ["bottlekit"]
+
+[tool.setuptools.package-data]
+bottlekit = ["models.yaml"]
+
+[tool.setuptools.dynamic]
+version = { attr = "bottlekit.__version__" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
